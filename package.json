@@ -15,6 +15,8 @@
     "@elastic/elasticsearch": "^8.17.1",
     "@next/bundle-analyzer": "^15.2.4",
     "@tailwindcss/postcss": "^4.1.1",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "autoprefixer": "^10.4.21",
     "axios": "^1.8.4",
     "cors": "^2.8.5",

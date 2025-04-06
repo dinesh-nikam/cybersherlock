@@ -301,17 +301,19 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  image: "/images/geolocation.gif",
+                  image: "/images/person-1.jpg",
                   name: "James Wilson",
                   role: "CEO, TechCorp",
                   text: "CyberSherlock has been a game-changer for our threat detection and IP analysis.",
                 },
                 {
+                  image: "/images/person-3.jpg",
                   name: "Sarah Chen",
                   role: "Security Analyst",
                   text: "The most comprehensive tool I've used for cybersecurity intelligence.",
                 },
                 {
+                  image: "/images/person-2.jpg",
                   name: "Michael Brown",
                   role: "IT Security Advisor",
                   text: "Essential for any business dealing with sensitive network data.",

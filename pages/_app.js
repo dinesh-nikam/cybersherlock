@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Head from "next/head"; // Import Head for adding meta and link tags
 import "../styles/globals.css"; // Assuming you have global styles
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function App({ Component, pageProps }) {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
@@ -18,14 +20,17 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   const toggleTheme = () => {
-    setIsDarkTheme((prev) => !prev);
-    if (isDarkTheme) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
+    setIsDarkTheme((prev) => {
+      const newTheme = !prev;
+      if (newTheme) {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
+      return newTheme;
+    });
   };
 
   return (
@@ -36,6 +41,7 @@ export default function App({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
+        
       </Head>
       <div className="min-h-screen bg-gray-900 text-white dark:bg-gray-900 dark:text-white">
         {/* Theme Toggle Button */}
@@ -81,6 +87,8 @@ export default function App({ Component, pageProps }) {
 
         {/* Render the current page */}
         <Component {...pageProps} />
+        <Analytics />
+        <SpeedInsights />
       </div>
     </>
   );
